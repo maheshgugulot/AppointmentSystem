@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <script src="my_script.js"></script>
+</head>
+
+
+<body>
+  {{ my_list|safe }}
+  <script>
+    var myData = JSON.parse('{{ my_list|safe }}');
+
+    // Create a table
+    var table = document.createElement('table');
+    table.setAttribute('border', '1');
+
+    // Add the header row
+    var headerRow = document.createElement('tr');
+    for (var property in myData[0]) {
+      var headerCell = document.createElement('th');
+      headerCell.textContent = property;
+      headerRow.appendChild(headerCell);
+    }
+    table.appendChild(headerRow);
+
+    // Add the data rows
+    for (var i = 0; i < myData.length; i++) {
+      var dataRow = document.createElement('tr');
+      for (var property in myData[i]) {
+        var dataCell = document.createElement('td');
+        dataCell.textContent = myData[i][property];
+        dataRow.appendChild(dataCell);
+      }
+      table.appendChild(dataRow);
+    }
+
+    // Append the table to the DOM
+    document.body.appendChild(table);
+  </script>
+</body>
+</html>

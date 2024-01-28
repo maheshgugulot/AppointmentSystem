@@ -1,0 +1,47 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/index.css' %}">
+
+</head>
+<body>
+    <form method="POST" class="container" action="{% url 'create_account' %}">
+    <h1>
+        REGISTRATION FORM
+    </h1>
+
+    {% csrf_token %}
+    <div  class="table"><div class="labels">
+        <label for="userFirstName">First Name: <strong style="color:red;">*</strong></label>
+        <label for="userLastName">Last Name: <strong style="color:red;">*</strong></label>
+    <label for="username">Username: <strong style="color:red;">*</strong></label>
+    <label for="password">Password: <strong style="color:red;">*</strong></label>
+    <label for="clinicName">Clinic Name: <strong style="color:red;">*</strong></label>
+    <label for="interval">Interval: <strong style="color:red;">*</strong></label>
+    </div>
+    <div class="inputs" >
+        <input type="text" name="username" id="username" required>
+        <input type="password" name="password" id="password" required>
+        <input type="text" name="clinicName" id="clinicName" required>
+        <input type="text" name="userFirstName" id="userFirstName" required>
+        <input type="text" name="userLastName" id="userLastName" required>
+        <input type="number" name="interval" id="interval" required>
+    </div>
+</div>
+<button type="submit" class="btn btn-primary">Submit</button>
+
+
+
+
+
+    <p>Already Account exits? <a href="{% url 'login' %}"> Login</a></p>
+  </form>
+  
+</body>
+</html>
